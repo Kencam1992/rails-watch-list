@@ -1,3 +1,15 @@
-<% @lists.movies.each do |movie| %>
-    <%= movie.title %>, <%= movie.overview %>
-  <% end %>
+<%# <% @lists.movies.each do |movie| %>
+    <%# <%= movie.title %> <%#= movie.overview %>
+  <%# <% end %>
+  <%= @list.name %>
+
+  <%= link_to 'new bookmark', new_list_bookmark_path(@list) %> |
+<%= link_to 'back', lists_path %> |
+<%= link_to 'delete', list_path(@list), method: :delete %>
+
+<% @list.bookmarks.each do |bookmark| %>
+<p><%= bookmark.movie.title%></p>
+<p><%= bookmark.movie.overview%></p>
+<p><%= bookmark.movie.rating%></p>
+<%= link_to 'bookmark delete', bookmark_path(bookmark), method: :delete %>
+<% end %>
